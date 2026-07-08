@@ -132,10 +132,13 @@ while True:
             print("Debe ingresar valores enteros.")
     
     elif opcion_escogida == 3:
-
-        codigo_a_buscar = input("Ingrese el codigo del libro: ")
-        nueva_multa = int(input("Ingrese nueva multa: "))
-        actualizada = actualizar_multa(codigo_a_buscar,nueva_multa,prestamos)
+        while True:
+            codigo_a_buscar = input("Ingrese el codigo del libro: ")
+            nueva_multa = int(input("Ingrese nueva multa: "))
+            actualizada = actualizar_multa(codigo_a_buscar,nueva_multa,prestamos)
+            s_o_n = input("¿Desea actualizar otra multa (s/n)?")
+            if s_o_n != "s":
+                break
 
     elif opcion_escogida == 4:
         codigo_nuevo = input("ingrese el codigo del libro: ").upper().strip()
@@ -148,7 +151,11 @@ while True:
 
     elif opcion_escogida == 5:
         codigo_eliminar = input("Ingrese codigo del libro a eliminar: ")
-        eliminar_libro(codigo_eliminar,libros,prestamos)
+        eliminado = eliminar_libro(codigo_eliminar,libros,prestamos)
+        if eliminado != True:
+            print("El codigo no existe")
+        else:
+            print("Libro eliminado")
 
     elif opcion_escogida == 6:
         print("Programa finalizado.")
